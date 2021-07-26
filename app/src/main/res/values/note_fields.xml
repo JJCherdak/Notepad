@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+    <resources>
+        <string-array name="fields">
+            <item>Название заметки</item>
+            <item>Описание заметки</item>
+            <item>Дата создания</item>
+            <item>Установить напоминание</item>
+        </string-array>
+
+    <integer-array name="detailed_fields">
+        <item>@drawable/phone</item>
+        <item>@drawable/like</item>
+        <item>@drawable/message</item>
+        <item>@drawable/setting</item>
+    </integer-array>
+
+</resources>
