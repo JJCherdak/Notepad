@@ -3,8 +3,8 @@ import android.os.Parcel;
 import android.os.Parcelable;
 
 public class Fields implements Parcelable {
-    private int imageIndex;
-    private String fieldName;
+    private final int imageIndex;
+    private final String fieldName;
 
     public Fields(int imageIndex, String fieldName){
         this.imageIndex = imageIndex;
@@ -39,11 +39,11 @@ public class Fields implements Parcelable {
         }
     };
 
-    public int getImageIndex() {
+    public final int getImageIndex() {
         return imageIndex;
     }
 
-    public String getFieldName() {
+    public final String getFieldName() {
         return fieldName;
     }
 }

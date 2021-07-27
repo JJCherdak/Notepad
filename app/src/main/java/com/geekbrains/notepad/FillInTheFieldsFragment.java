@@ -1,5 +1,6 @@
 package com.geekbrains.notepad;
 
+import android.content.Context;
 import android.content.res.TypedArray;
 import android.os.Bundle;
 
@@ -12,6 +13,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
+import android.view.Gravity;
+
 
 
 public class FillInTheFieldsFragment extends Fragment {
@@ -32,6 +36,7 @@ public class FillInTheFieldsFragment extends Fragment {
         args.putParcelable(ARG_FIELDS, field);
         f.setArguments(args);
         return f;
+
     }
 
 
@@ -41,6 +46,7 @@ public class FillInTheFieldsFragment extends Fragment {
         if (getArguments() != null) {
             field = getArguments().getParcelable(ARG_FIELDS);
         }
+
     }
 
     @Override
@@ -52,6 +58,13 @@ public class FillInTheFieldsFragment extends Fragment {
         imageFields.setImageResource(images.getResourceId(field.getImageIndex(), -1));
         TextView fieldNameView = view.findViewById(R.id.textView);
         fieldNameView.setText(field.getFieldName());
+        images.recycle();
         return view;
+
     }
+
+
+
+
+
 }

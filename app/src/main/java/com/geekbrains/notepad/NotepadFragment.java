@@ -42,12 +42,9 @@ public class NotepadFragment extends Fragment {
             tv.setTextSize(30);
             layoutView.addView(tv);
             final int fi = i;
-            tv.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    currentField = new Fields(fi, getResources().getStringArray(R.array.fields)[fi]);
-                    showFields(currentField);
-                }
+            tv.setOnClickListener(v -> {
+                currentField = new Fields(fi, getResources().getStringArray(R.array.fields)[fi]);
+                showFields(currentField);
             });
         }
     }
@@ -92,7 +89,7 @@ public class NotepadFragment extends Fragment {
             FillInTheFieldsFragment detail = FillInTheFieldsFragment.newInstance(currentField);
         FragmentManager fragmentManager = requireActivity().getSupportFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-        fragmentTransaction.replace(R.id.fill_in_the_fields, detail);  // замена фрагмента
+        fragmentTransaction.replace(R.id.fill_in_the_fields, detail);
         fragmentTransaction.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE);
         fragmentTransaction.commit();
     }

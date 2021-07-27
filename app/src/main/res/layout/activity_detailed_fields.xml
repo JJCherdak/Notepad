@@ -7,4 +7,13 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"/>
 
+    <EditText
+        android:id="@+id/addText"
+        android:background="#D2E9B61E"
+        android:textStyle="bold"
+        android:text="20sp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
+
+
 </FrameLayout>
