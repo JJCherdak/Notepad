@@ -3,12 +3,16 @@ package com.geekbrains.notepad;
 import android.content.Context;
 import android.content.res.TypedArray;
 import android.os.Bundle;
-
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.annotation.NonNull;
 import androidx.appcompat.widget.AppCompatEditText;
 import androidx.appcompat.widget.AppCompatImageView;
 import androidx.fragment.app.Fragment;
 
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
@@ -18,7 +22,7 @@ import android.view.Gravity;
 
 
 
-public class FillInTheFieldsFragment extends Fragment {
+public class FillInTheFieldsFragment extends Fragment{
 
     public FillInTheFieldsFragment(){
 
@@ -62,8 +66,6 @@ public class FillInTheFieldsFragment extends Fragment {
         return view;
 
     }
-
-
 
 
 
