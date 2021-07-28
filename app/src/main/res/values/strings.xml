@@ -1,3 +1,11 @@
 <resources>
     <string name="app_name">Notepad</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="settings">Настройки</string>
+    <string name="main">главная</string>
+    <string name="save">сохранить</string>
+    <string name="search">поиск</string>
+    <string name="add">новая заметка</string>
+    <string name="edit">редактировать</string>
 </resources>
