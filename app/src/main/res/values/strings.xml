@@ -1,3 +1,29 @@
 <resources>
     <string name="app_name">Notepad</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="settings">Настройки</string>
+    <string name="main">главная</string>
+    <string name="save">сохранить</string>
+    <string name="search">поиск</string>
+    <string name="add">новая заметка</string>
+    <string name="edit">редактировать</string>
+
+
+    <string name="note_title_1">Встреча</string>
+    <string name="note_title_2">Список покупок</string>
+    <string name="note_title_3">Список паролей</string>
+    <string name="note_title_4">Нотариус</string>
+
+    <string name="note_description_1">Завтра в 15.00 встреча с Ивановым по проекту.</string>
+    <string name="note_description_2">Молоко-1шт, яйца, хлеб, рыба, стейк, вино</string>
+    <string name="note_description_3">пароль от почты"ххххх", от онлайн банка "ххххх"</string>
+    <string name="note_description_4">Встеча с нотариусом, не забыть договор</string>
+
+    <string name="note_date_1">01.08.21</string>
+    <string name="note_date_2">02.08.21</string>
+    <string name="note_date_3">без даты</string>
+    <string name="note_date_4">15.08.21</string>
+
+
 </resources>
