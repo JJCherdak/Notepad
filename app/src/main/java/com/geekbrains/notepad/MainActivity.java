@@ -34,15 +34,15 @@ public class MainActivity extends AppCompatActivity {
         itemDecoration.setDrawable(getResources().getDrawable(R.drawable.divider, null));
         recyclerView.addItemDecoration(itemDecoration);
 
-        adapter.setListener(position -> {
-            Toast.makeText(this, "click" +
-                    getResources().getStringArray(R.array.fields)[position], Toast.LENGTH_SHORT).show();
+//        adapter.setListener(position -> {
+//            Toast.makeText(this, "click" +
+//                    getResources().getStringArray(R.array.fields)[position], Toast.LENGTH_SHORT).show();
 //            FillInTheFieldsFragment details = new FillInTheFieldsFragment();
-//            details.setArguments(getIntent().getExtras());
+//          details.setArguments(getIntent().getExtras());
 //            getSupportFragmentManager()
-//                    .beginTransaction()
-//                    .replace(R.id.fragment_container,details).commit();
-        });
+//                   .beginTransaction()
+//                   .replace(R.id.fragment_container,details).commit();
+//        });
     }
 
     @Override
