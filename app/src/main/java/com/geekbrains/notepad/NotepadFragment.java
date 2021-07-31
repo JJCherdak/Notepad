@@ -35,12 +35,14 @@ public class NotepadFragment extends Fragment {
         LinearLayout layoutView = (LinearLayout)view;
         String[] fields = getResources().getStringArray(R.array.fields);
 
+        LayoutInflater ltInflater = getLayoutInflater();
+
         for(int i=0; i < fields.length; i++){
             String field = fields[i];
-            TextView tv = new TextView(getContext());
+            View item = ltInflater.inflate(R.layout.item, layoutView, false);
+            TextView tv = item.findViewById(R.id.textView);
             tv.setText(field);
-            tv.setTextSize(30);
-            layoutView.addView(tv);
+            layoutView.addView(item);
             final int fi = i;
             tv.setOnClickListener(v -> {
                 currentField = new Fields(fi, getResources().getStringArray(R.array.fields)[fi]);
