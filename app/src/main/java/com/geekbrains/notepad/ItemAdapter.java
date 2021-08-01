@@ -13,6 +13,7 @@ import org.w3c.dom.Text;
 
 public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.ItemViewHoldrer> {
 
+
     private CardSource dataSource;
     private static OnItemClickListener listener;
 
@@ -55,9 +56,9 @@ public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.ItemViewHoldre
             description = itemView.findViewById(R.id.description);
             date = itemView.findViewById(R.id.date);
 
-            itemView.setOnClickListener(v -> {
-                listener.onItemClick(getAdapterPosition());
-            });
+//            itemView.setOnClickListener(v -> {
+//                listener.onItemClick(getAdapterPosition());
+//            });
 
         }
 
@@ -67,10 +68,12 @@ public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.ItemViewHoldre
             title.setText(cardNote.getTitle());
             description.setText(cardNote.getDescription());
             date.setText(cardNote.getDate());
+
+            description.setOnClickListener(v -> listener.onItemClick(description, getLayoutPosition()));
         }
     }
 
     interface OnItemClickListener{
-        void onItemClick (int position);
+        void onItemClick (View view, int position);
     }
 }
