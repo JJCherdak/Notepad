@@ -55,9 +55,9 @@ public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.ItemViewHoldre
             description = itemView.findViewById(R.id.description);
             date = itemView.findViewById(R.id.date);
 
-//            itemView.setOnClickListener(v -> {
-//                listener.onItemClick(getAdapterPosition());
-//            });
+            itemView.setOnClickListener(v -> {
+                listener.onItemClick(getAdapterPosition());
+            });
 
         }
 
