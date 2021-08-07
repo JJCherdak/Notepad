@@ -87,7 +87,7 @@ public class CardNoteFirestoreImpl implements CardSource {
     }
 
     @Override
-    public void addCardNote(CardNote cardNote) {
+    public void addCardNote(final CardNote cardNote) {
         collection.add(cardNote).addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
             @Override
             public void onSuccess(DocumentReference documentReference) {

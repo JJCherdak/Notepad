@@ -2,6 +2,7 @@ package com.geekbrains.notepad;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.res.ResourcesCompat;
 import androidx.fragment.app.FragmentManager;
@@ -85,16 +86,19 @@ public class MainActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         switch (item.getItemId()){
             case R.id.action_add:
-
-                CardNote cardNote = new CardNote("новая заметка", "текст заметки", "установите дату");
-                cardNote.setId(UUID.randomUUID().toString());
-                cardSource.addCardNote(cardNote);
+                cardSource.addCardNote(new CardNote("новая заметка", "текст заметки", "установите дату"));
                 adapter.notifyItemChanged(cardSource.size()-1);
                 recyclerView.scrollToPosition(cardSource.size()-1);
                 return true;
             case R.id.action_clear:
-                cardSource.clearCardNote();
-                adapter.notifyDataSetChanged();
+                AlertDialog.Builder builder = new AlertDialog.Builder(this);
+                builder.setTitle("ВНИМАНИЕ")
+                        .setMessage("Вы точно хотите удалить все заметки?")
+                        .setCancelable(true)
+                        .setPositiveButton("ДА", (dialog, which) -> {
+                            cardSource.clearCardNote();
+                            adapter.notifyDataSetChanged();
+                        }).show();
                 return true;
         }
         return super.onOptionsItemSelected(item);
