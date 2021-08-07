@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+    <resources>
+        <string-array name="fields">
+            <item>ЗАМЕТКА 1</item>
+            <item>ЗАМЕТКА 2</item>
+            <item>ЗАМЕТКА 3</item>
+            <item>ЗАМЕТКА 4</item>
+        </string-array>
+
+    <integer-array name="detailed_fields">
+        <item>@drawable/phone</item>
+        <item>@drawable/like</item>
+        <item>@drawable/message</item>
+        <item>@drawable/setting</item>
+    </integer-array>
+
+
+
+</resources>
