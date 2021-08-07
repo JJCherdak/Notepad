@@ -10,10 +10,17 @@ import java.util.List;
 public class CardSourceImpl implements CardSource {
 
     private List <CardNote> cards;
+    private  Context context;
 
 
     public CardSourceImpl(Context context) {
+        this.context = context;
 
+
+    }
+
+    @Override
+    public CardSource init(CardSourceResponse response) {
         cards = new ArrayList<>(Arrays.asList(
                 new CardNote(
                         context.getResources().getString(R.string.note_title_1),
@@ -38,8 +45,14 @@ public class CardSourceImpl implements CardSource {
                         context.getResources().getString(R.string.note_date_4)
 
                 ))
-
         );
+
+        if (response != null){
+            response.initialized(this);
+
+        }
+
+        return this;
     }
 
     @Override

@@ -4,9 +4,12 @@ import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.res.ResourcesCompat;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.fragment.app.Fragment;
 
 import android.content.ClipData;
 import android.os.Build;
@@ -16,6 +19,8 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Toast;
+
+import java.util.UUID;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -28,13 +33,16 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+//        addFragment(FillInTheFieldsFragment.newInstance(null));
 
         recyclerView = findViewById(R.id.recyclerView);
-        cardSource = new CardSourceImpl(this);
+        cardSource = new CardNoteFirestoreImpl();
 
         adapter = new ItemAdapter(cardSource);
 
- //       ItemAdapter adapter = new ItemAdapter(getResources().getStringArray(R.array.fields));
+        cardSource.init(cardSource -> adapter.notifyDataSetChanged());
+
+//        ItemAdapter adapter = new ItemAdapter(getResources().getStringArray(R.array.detailed_fields));
 
         recyclerView.setHasFixedSize(true);
         recyclerView.setAdapter(adapter);
@@ -55,15 +63,16 @@ public class MainActivity extends AppCompatActivity {
         registerForContextMenu(recyclerView);
 
 
- //       adapter.setListener(position -> {
-//            Toast.makeText(this, "click" +
-//                    getResources().getStringArray(R.array.fields)[position], Toast.LENGTH_SHORT).show();
-//            FillInTheFieldsFragment details = new FillInTheFieldsFragment();
- //         details.setArguments(getIntent().getExtras());
- //           getSupportFragmentManager()
-//                   .beginTransaction()
-//                   .replace(R.id.fragment_container,details).commit();
-  //      });
+//        adapter.setListener(new ItemAdapter.OnItemClickListener() {
+//            @Override
+//            public void onItemClick(View view, int position) {
+//                FillInTheFieldsFragment details = new FillInTheFieldsFragment();
+//                details.setArguments(getIntent().getExtras());
+//                getSupportFragmentManager()
+//                        .beginTransaction()
+//                        .replace(R.id.fragment_container,details).commit();
+//            }
+//        });
     }
 
     @Override
@@ -76,7 +85,10 @@ public class MainActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         switch (item.getItemId()){
             case R.id.action_add:
-                cardSource.addCardNote(new CardNote("новая заметка", "текст заметки", "установите дату"));
+
+                CardNote cardNote = new CardNote("новая заметка", "текст заметки", "установите дату");
+                cardNote.setId(UUID.randomUUID().toString());
+                cardSource.addCardNote(cardNote);
                 adapter.notifyItemChanged(cardSource.size()-1);
                 recyclerView.scrollToPosition(cardSource.size()-1);
                 return true;
@@ -98,12 +110,15 @@ public class MainActivity extends AppCompatActivity {
     public boolean onContextItemSelected(@NonNull MenuItem item) {
 
         switch (item.getItemId()){
-            case R.id.action_update:
+            case R.id.action_delete:
                 cardSource.deleteCardNote(currentPosition);
                 adapter.notifyItemRemoved(currentPosition);
                 return true;
-            case R.id.action_delete:
-                cardSource.updateCardNote(currentPosition, new CardNote("новая заметка", "текст заметки", "установите дату"));
+            case R.id.action_update:
+
+                CardNote cardNote = new CardNote("новая заметка", "текст заметки", "установите дату");
+                cardNote.setId(cardSource.getCardNote(currentPosition).getId());
+                cardSource.updateCardNote(currentPosition,cardNote);
                 adapter.notifyItemChanged(currentPosition);
                 return true;
         }
@@ -111,4 +126,12 @@ public class MainActivity extends AppCompatActivity {
 
         return super.onContextItemSelected(item);
     }
+
+//    private void addFragment(Fragment fragment) {
+//        FragmentManager fragmentManager = getSupportFragmentManager();
+//        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+//        fragmentTransaction.replace(R.id.fragment_container, fragment);
+//        fragmentTransaction.addToBackStack(null);
+//        fragmentTransaction.commit();
+//    }
 }

@@ -21,6 +21,9 @@ public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.ItemViewHoldre
         this.dataSource = dataSource;
     }
 
+    public ItemAdapter(String[] stringArray) {
+    }
+
     public void setListener(@Nullable OnItemClickListener listener) {
         this.listener = listener;
     }
